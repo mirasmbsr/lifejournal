@@ -8,26 +8,118 @@
 </head>
 <body>
     <header>
-        <h1>Мой прогресс</h1>
+        <h1>Life Journal</h1>
     </header>
     <nav>
         <a href="index.html">Главная</a>
         <a href="day.html">День за днем</a>
         <a href="goals.html">Цели и мечты</a>
-        <a href="progress.html">Мой прогресс</a>
+        <a href="progress.html" class="active">Мой прогресс</a>
     </nav>
     <main>
-        <section class="block">
-            <h2>Отслеживание прогресса:</h2>
-            <p>Здесь будет график эмоций и прогресса по целям.</p>
-            <button>Скачать записи в PDF</button>
-            <form>
-                <label for="feedback">Что вы хотите улучшить?</label>
-                <textarea id="feedback" rows="4" style="width: 100%;"></textarea>
-                <br>
+        <!-- Описание страницы -->
+        <section class="page-description">
+            <h2>Мой прогресс</h2>
+            <p>На этой странице вы можете увидеть свою статистику, графики активности и достижения.</p>
+        </section>
+
+        <!-- График эмоций -->
+        <section class="emotions-chart block">
+            <h3>График эмоций</h3>
+            <canvas id="emotions-chart" width="800" height="400"></canvas>
+        </section>
+
+        <!-- Статистика целей -->
+        <section class="goals-stats block">
+            <h3>Статистика целей</h3>
+            <div class="stats-container">
+                <div class="stat">
+                    <h4>Завершено</h4>
+                    <p id="completed-goals-stat">0</p>
+                </div>
+                <div class="stat">
+                    <h4>В процессе</h4>
+                    <p id="ongoing-goals-stat">0</p>
+                </div>
+                <div class="stat">
+                    <h4>Всего</h4>
+                    <p id="total-goals-stat">0</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="achievements block">
+            <h3>Ваши достижения</h3>
+            <div class="achievement-list">
+                <div class="achievement">
+                    <img src="path/to/medal1.png" alt="Медаль">
+                    <p>Выполнено 5 целей</p>
+                </div>
+                <div class="achievement">
+                    <img src="path/to/medal2.png" alt="Медаль">
+                    <p>Заполнено 7 дней подряд</p>
+                </div>
+                <div class="achievement">
+                    <img src="path/to/medal3.png" alt="Медаль">
+                    <p>Достигнута долгосрочная цель</p>
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- Обратная связь -->
+        <section class="feedback block">
+            <h3>Обратная связь</h3>
+            <form id="feedback-form">
+                <textarea placeholder="Ваши предложения или комментарии..." rows="4"></textarea>
                 <button type="submit">Отправить</button>
             </form>
         </section>
+
     </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // График эмоций
+        const ctx = document.getElementById('emotions-chart').getContext('2d');
+        const emotionsChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'],
+                datasets: [{
+                    label: 'Уровень эмоций',
+                    data: [3, 5, 7, 8, 6, 9, 4],
+                    borderColor: '#4CAF50',
+                    backgroundColor: 'rgba(76, 175, 80, 0.2)',
+                    borderWidth: 2,
+                    tension: 0.3
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+
+        // Статистика целей
+        const completedGoalsStat = document.getElementById('completed-goals-stat');
+        const ongoingGoalsStat = document.getElementById('ongoing-goals-stat');
+        const totalGoalsStat = document.getElementById('total-goals-stat');
+
+        function updateStats(completed, ongoing) {
+            const total = completed + ongoing;
+            completedGoalsStat.textContent = completed;
+            ongoingGoalsStat.textContent = ongoing;
+            totalGoalsStat.textContent = total;
+        }
+
+        // Пример статистики
+        updateStats(5, 3);
+    </script>
 </body>
 </html>
