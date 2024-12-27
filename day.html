@@ -8,24 +8,57 @@
 </head>
 <body>
     <header>
-        <h1>День за днем</h1>
+        <h1>Life Journal</h1>
     </header>
     <nav>
         <a href="index.html">Главная</a>
-        <a href="day.html">День за днем</a>
+        <a href="day.html" class="active">День за днем</a>
         <a href="goals.html">Цели и мечты</a>
         <a href="progress.html">Мой прогресс</a>
     </nav>
     <main>
-        <section class="block">
-            <h2>Запишите события дня:</h2>
-            <textarea placeholder="Что сегодня произошло?" rows="4" style="width: 100%;"></textarea>
-            <p>Эмоциональная шкала:</p>
-            <input type="range" min="1" max="10" value="5">
-            <p>Моя цель на сегодня:</p>
-            <input type="text" placeholder="Введите вашу цель">
-            <button>Сохранить запись</button>
+        <!-- Описание страницы -->
+        <section class="page-description">
+            <h2>День за днем</h2>
+            <p>На этой странице вы можете записывать события своего дня, оценивать эмоциональное состояние и анализировать свою активность. Используйте поля ниже, чтобы зафиксировать всё самое важное.</p>
+        </section>
+
+        <!-- Блок записи дня -->
+        <section class="daily-entry block">
+            <h3>Запишите события дня</h3>
+            <textarea id="daily-entry" placeholder="Напишите, что сегодня произошло..."></textarea>
+            <div class="hint">Подумайте о ключевых моментах, эмоциях или событиях, которые сделали этот день особенным.</div>
+        </section>
+
+        <!-- Блок эмоциональной шкалы -->
+        <section class="emotional-scale block">
+            <h3>Эмоциональная шкала</h3>
+            <input type="range" id="emotional-scale" min="1" max="10" value="5">
+            <p>Ваш уровень эмоций: <span id="emotion-value">5</span></p>
+        </section>
+
+        <!-- Блок целей на день -->
+        <section class="daily-goals block">
+            <h3>Ваши цели на сегодня</h3>
+            <ul>
+                <li><input type="text" placeholder="Введите первую цель"></li>
+                <li><input type="text" placeholder="Введите вторую цель"></li>
+                <li><input type="text" placeholder="Введите третью цель"></li>
+            </ul>
+        </section>
+
+        <!-- Кнопка перехода -->
+        <section class="next-step block">
+            <button onclick="location.href='goals.html'">Сохранить и продолжить</button>
         </section>
     </main>
+    <script>
+        // Отображение значения шкалы эмоций
+        const emotionalScale = document.getElementById('emotional-scale');
+        const emotionValue = document.getElementById('emotion-value');
+        emotionalScale.addEventListener('input', () => {
+            emotionValue.textContent = emotionalScale.value;
+        });
+    </script>
 </body>
 </html>
