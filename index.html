@@ -17,32 +17,54 @@
         <a href="progress.html">Мой прогресс</a>
     </nav>
     <main>
-        <section id="home" class="block">
-            <div class="sub-block">
-                <h2>Добро пожаловать!</h2>
+
+        <section class="welcome-block">
+            <h2>Добро пожаловать!</h2>
+            <p>Life Journal — это ваш верный помощник в достижении целей и саморазвитии. Здесь вы можете записывать свои мысли, отслеживать прогресс и вдохновляться своими успехами. Начните свой путь к лучшей версии себя уже сегодня!</p>
+        </section>
+
+        <!-- User Form -->
+        <section class="user-form block">
+            <h2>Регистрация</h2>
+            <form>
+                <label for="username">Имя пользователя:</label>
+                <input type="text" id="username" placeholder="Введите ваше имя">
+
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" placeholder="Введите ваш пароль">
+
+                <label for="email">Электронная почта:</label>
+                <input type="email" id="email" placeholder="Введите ваш email">
+
+                <div class="checkbox">
+                    <input type="checkbox" id="newsletter">
+                    <label for="newsletter">Согласны ли вы получать рассылки?</label>
+                </div>
+
+                <button type="submit">ВОЙТИ</button>
+            </form>
+        </section>
+
+        <!-- Overview Cards -->
+        <section class="overview-cards block">
+            <div class="overview-card">
+                <img src="path/to/image1.jpg" alt="Day by Day">
+                <p>День за днем: Записывайте свои мысли и цели каждый день.</p>
             </div>
-            <div class="sub-block">
-                <p>Life Journal поможет вам фиксировать мысли, цели и прогресс.</p>
+            <div class="overview-card">
+                <img src="path/to/image2.jpg" alt="Goals">
+                <p>Цели и мечты: Создавайте и отслеживайте прогресс своих мечт.</p>
             </div>
-            <div class="sub-block">
-                <form>
-                    <label for="username">Имя пользователя:</label>
-                    <input type="text" id="username" placeholder="Введите ваше имя">
-                    <br><br>
-                    <button type="submit">Войти</button>
-                </form>
+            <div class="overview-card">
+                <img src="path/to/image3.jpg" alt="Progress">
+                <p>Мой прогресс: Анализируйте свой рост и успехи.</p>
             </div>
-            <div class="sub-block">
-                <h3>Краткий обзор:</h3>
-                <ul>
-                    <li><strong>День за днем:</strong> Записывайте свои мысли и цели каждый день.</li>
-                    <li><strong>Цели и мечты:</strong> Создавайте и отслеживайте прогресс своих мечт.</li>
-                    <li><strong>Мой прогресс:</strong> Анализируйте свой рост и успехи.</li>
-                </ul>
-            </div>
-            <div class="sub-block">
-                <button onclick="location.href='day.html'">Начать свой путь</button>
-            </div>
+        </section>
+
+        <!-- Start Path Block -->
+        <section class="path-block block">
+            <p>\"Путешествие в тысячу миль начинается с одного шага.\" – Лао-цзы</p>
+            <button onclick="location.href='day.html'">Начать свой путь!</button>
         </section>
     </main>
 </body>
