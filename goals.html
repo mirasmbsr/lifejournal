@@ -8,24 +8,110 @@
 </head>
 <body>
     <header>
-        <h1>Цели и мечты</h1>
+        <h1>Life Journal</h1>
     </header>
     <nav>
         <a href="index.html">Главная</a>
         <a href="day.html">День за днем</a>
-        <a href="goals.html">Цели и мечты</a>
+        <a href="goals.html" class="active">Цели и мечты</a>
         <a href="progress.html">Мой прогресс</a>
     </nav>
     <main>
-        <section class="block">
-            <h2>Добавьте ваши цели:</h2>
-            <ul>
-                <li>Цель 1: <input type="text" placeholder="Добавить новую цель"></li>
-                <li>Цель 2: <input type="text" placeholder="Добавить новую цель"></li>
+        <!-- Описание страницы -->
+        <section class="page-description">
+            <h2>Цели и мечты</h2>
+            <p>На этой странице вы можете добавлять свои цели, перемещать выполненные задачи в завершённые и отслеживать прогресс их выполнения.</p>
+        </section>
+
+        <!-- Прогресс выполнения -->
+        <section class="progress-tracker block">
+            <h3>Ваш прогресс</h3>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill" style="width: 0%;"></div>
+            </div>
+            <p id="progress-text">0% выполнено</p>
+        </section>
+
+        <!-- Список целей -->
+        <section class="goals-list block">
+            <h3>Ваши цели</h3>
+            <ul id="goals-list">
+                <!-- Список начнётся пустым -->
             </ul>
-            <button>Добавить новую цель</button>
-            <p>"Не бойтесь мечтать о великом." - Альберт Эйнштейн</p>
+            <form id="goal-form">
+                <input type="text" id="goal-input" placeholder="Добавьте новую цель">
+                <button type="button" id="add-goal-btn">Добавить цель</button>
+            </form>
+        </section>
+
+        <!-- Завершенные цели -->
+        <section class="completed-goals block">
+            <h3>Завершенные цели</h3>
+            <p>Вы достигли следующих целей:</p>
+            <ul id="completed-goals-list">
+                <!-- Завершённые цели будут добавляться сюда -->
+            </ul>
         </section>
     </main>
+
+    <script>
+        // Элементы DOM
+        const goalForm = document.getElementById('goal-form');
+        const goalInput = document.getElementById('goal-input');
+        const goalsList = document.getElementById('goals-list');
+        const completedGoalsList = document.getElementById('completed-goals-list');
+        const progressFill = document.getElementById('progress-fill');
+        const progressText = document.getElementById('progress-text');
+
+        // Добавление новой цели
+        document.getElementById('add-goal-btn').addEventListener('click', () => {
+            const goalText = goalInput.value.trim();
+            if (goalText !== '') {
+                const goalItem = document.createElement('li');
+                goalItem.textContent = goalText;
+                goalItem.classList.add('goal-item');
+
+                // Кнопка завершения
+                const completeBtn = document.createElement('button');
+                completeBtn.textContent = '✔';
+                completeBtn.classList.add('complete-btn');
+                completeBtn.addEventListener('click', () => {
+                    moveToCompleted(goalItem);
+                });
+
+                goalItem.appendChild(completeBtn);
+                goalsList.appendChild(goalItem);
+
+                goalInput.value = ''; // Очистить поле ввода
+                updateProgress(); // Обновить прогресс
+            }
+        });
+
+        // Перемещение цели в завершённые
+        function moveToCompleted(goalItem) {
+            const completedItem = document.createElement('li');
+            completedItem.textContent = goalItem.textContent.replace('✔', '').trim();
+            completedGoalsList.appendChild(completedItem);
+
+            // Удаление из текущих целей
+            goalItem.remove();
+            updateProgress(); // Обновить прогресс
+        }
+
+        // Обновление прогресса
+        function updateProgress() {
+            const totalGoals = goalsList.childElementCount + completedGoalsList.childElementCount;
+            const completedGoals = completedGoalsList.childElementCount;
+
+            if (totalGoals > 0) {
+                const progress = Math.round((completedGoals / totalGoals) * 100);
+                progressFill.style.width = `${progress}%`;
+                progressText.textContent = `${progress}% выполнено`;
+            } else {
+                progressFill.style.width = `0%`;
+                progressText.textContent = `0% выполнено`;
+            }
+        }
+    </script>
 </body>
 </html>
