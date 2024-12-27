@@ -1,9 +1,11 @@
 /* General Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f9f9f9;
+    background-color: #f4f4f4;
+    line-height: 1.6;
+    color: #333;
 }
 
 /* Header Styles */
@@ -11,88 +13,730 @@ header {
     background-color: #4CAF50;
     color: white;
     text-align: center;
-    padding: 1rem;
+    padding: 2rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Navigation Styles */
 nav {
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    gap: 2rem;
     background-color: #333;
-    padding: 0.5rem;
+    padding: 1rem;
     position: sticky;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
     background-color: #4CAF50;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-size: 1.1rem;
 }
 
 nav a:hover {
     background-color: #45a049;
+    transform: scale(1.1);
 }
 
-/* Main Content Styles */
-main {
-    padding: 2rem;
+nav a.active {
+    background-color: #2e7d32;
+    font-weight: bold;
+    color: white;
+}
+
+/* Section Styles */
+section {
+    margin: 3rem auto;
+    padding: 3rem;
+    max-width: 1200px; /* Увеличиваем ширину */
+    background-color: white;
+    border-radius: 16px; /* Более округлые края */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Глубокая тень для объема */
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+section:hover {
+    transform: translateY(-5px); /* Эффект поднятия при наведении */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Welcome Block */
+.welcome-block {
     text-align: center;
+    padding: 4rem 6rem;
+    background-color: #d8f3dc;
+    border-radius: 16px;
+    margin-bottom: 4rem;
 }
 
-/* Block Styles */
-.block {
-    background: white;
-    margin: 2rem auto;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+.welcome-block h2 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+.welcome-block p {
+    font-size: 1.5rem;
     max-width: 800px;
+    margin: 0 auto;
+    color: #555;
+    line-height: 1.8;
 }
 
-/* Sub-Block Styles */
-.sub-block {
+/* Form Styles */
+.user-form {
+    padding: 3rem;
+    background-color: #ffffff;
+    border: 2px solid #ddd;
+    border-radius: 16px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.user-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #444;
+}
+
+.user-form input[type="text"],
+.user-form input[type="password"],
+.user-form input[type="email"] {
+    width: 80%; /* Увеличена ширина */
     margin-bottom: 1.5rem;
     padding: 1rem;
-    border: 1px solid #ddd;
+    border: 1px solid #ccc;
     border-radius: 8px;
-    background-color: #fefefe;
+    font-size: 1.2rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: border 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Form and Button Styles */
-button {
+.user-form input:focus {
+    border: 1px solid #4CAF50;
+    box-shadow: 0 2px 6px rgba(0, 128, 0, 0.3);
+    outline: none;
+}
+
+.user-form button {
     background-color: #4CAF50;
     color: white;
     border: none;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
+    padding: 1.2rem 3rem;
+    font-size: 1.5rem;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 12px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.user-form button:hover {
+    background-color: #45a049;
+    transform: scale(1.1);
+}
+
+/* Overview Cards */
+.overview-cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.overview-card {
+    background-color: #f9f9f9;
+    border-radius: 16px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 2rem;
+    flex: 1 1 calc(33.333% - 2rem); /* Респонсивное поведение */
+    max-width: 350px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.overview-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.overview-card img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.overview-card p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+/* Path Block */
+.path-block {
+    text-align: center;
+    padding: 4rem;
+    background-color: #e8f5e9;
+    border-radius: 16px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 4rem;
+}
+
+.path-block p {
+    font-size: 2rem;
+    font-style: italic;
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+.path-block button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 1.5rem 4rem;
+    font-size: 1.8rem;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.path-block button:hover {
+    background-color: #45a049;
+    transform: scale(1.1);
+}
+
+
+/* Page Description */
+.page-description {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 1.5rem;
+    background-color: #e8f5e9;
+    border-radius: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 1.2rem;
+    color: #333;
+    max-width: 1000px;
+    margin: 0 auto 3rem auto;
+}
+
+.page-description h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #4CAF50;
+}
+
+/* Daily Entry Block */
+.daily-entry {
+    text-align: center;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 3rem;
+}
+
+.daily-entry h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #4CAF50;
+}
+
+.daily-entry textarea {
+    width: 100%;
+    max-width: 800px;
+    height: 200px;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    resize: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+}
+
+.daily-entry .hint {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 1rem;
+}
+
+/* Emotional Scale Block */
+.emotional-scale {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 3rem;
+}
+
+.emotional-scale h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #4CAF50;
+}
+
+.emotional-scale input[type="range"] {
+    width: 100%;
+    max-width: 800px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.emotional-scale p {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+    color: #555;
+}
+
+/* Daily Goals Block */
+.daily-goals {
+    text-align: center;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 3rem;
+}
+
+.daily-goals h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #4CAF50;
+}
+
+.daily-goals ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.daily-goals ul li {
+    margin-bottom: 1rem;
+}
+
+.daily-goals input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Next Step Button */
+.next-step {
+    text-align: center;
+    padding: 2rem;
+}
+
+.next-step button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 1.2rem 2.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.next-step button:hover {
+    background-color: #45a049;
+    transform: scale(1.1);
+}
+
+
+/* Goals List Block */
+.goals-list {
+    text-align: center;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 3rem;
+}
+
+.goals-list h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #4CAF50;
+}
+
+.goals-list ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+}
+
+.goals-list ul li {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+.goals-list form {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.goals-list input {
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.goals-list button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-button:hover {
+.goals-list button:hover {
     background-color: #45a049;
 }
 
-form input, form textarea {
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
-    display: block;
-    padding: 0.5rem;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+/* Quote Slider */
+.quote-slider {
+    text-align: center;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 16px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 3rem;
 }
 
-form textarea {
-    resize: vertical;
+.quote-slider h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #4CAF50;
+}
+
+.quote-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.quote-container p {
+    font-size: 1.2rem;
+    color: #555;
+    max-width: 600px;
+    margin: 0;
+    text-align: center;
+}
+
+.quote-container .arrow {
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.quote-container .arrow:hover {
+    background-color: #45a049;
+}
+
+/* Completed Goals */
+.completed-goals {
+    text-align: center;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 3rem;
+}
+
+.completed-goals ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.completed-goals ul li {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+
+/* Goals List Block */
+.goals-list {
+    text-align: center;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 3rem;
+}
+
+.goals-list h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #4CAF50;
+}
+
+.goals-list ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+}
+
+.goals-list ul li {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #555;
+    position: relative;
+    padding-right: 2rem;
+}
+
+.goal-item .complete-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.goal-item .complete-btn:hover {
+    background-color: #45a049;
+}
+
+/* Completed Goals */
+.completed-goals {
+    text-align: center;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 3rem;
+}
+
+.completed-goals ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.completed-goals ul li {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+
+/* Progress Tracker */
+.progress-tracker {
+    text-align: center;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 3rem;
+}
+
+.progress-bar {
+    width: 80%;
+    height: 20px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    margin: 1rem auto;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #4CAF50;
+    transition: width 0.3s ease;
+}
+
+#progress-text {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #555;
+}
+
+
+/* Emotions Chart Block */
+.emotions-chart {
+    text-align: center;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 3rem;
+}
+
+.emotions-chart h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #4CAF50;
+}
+
+/* Goals Stats */
+.goals-stats {
+    text-align: center;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 3rem;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+}
+
+.stat {
+    background-color: #f9f9f9;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex: 1;
+}
+
+.stat h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #4CAF50;
+}
+
+.stat p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #555;
+}
+
+/* Feedback Form */
+.feedback {
+    text-align: center;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 3rem;
+}
+
+.feedback h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #4CAF50;
+}
+
+.feedback textarea {
+    width: 100%;
+    max-width: 600px;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    resize: none;
+}
+
+.feedback button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.feedback button:hover {
+    background-color: #45a049;
+}
+
+
+/* Achievements Block */
+.achievements {
+    text-align: center;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 3rem;
+}
+
+.achievements h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #4CAF50;
+}
+
+.achievement-list {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.achievement {
+    text-align: center;
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 150px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.achievement:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.achievement img {
+    max-width: 100%;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+.achievement p {
+    font-size: 1.1rem;
+    color: #555;
 }
